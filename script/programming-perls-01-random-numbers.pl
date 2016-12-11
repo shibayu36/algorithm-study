@@ -37,6 +37,7 @@ cmpthese(10, {
     #     return $picked;
     # },
     swap_pickup => sub {
+        # randomピックアップを配列の前の方と後ろの方でやるのが面白い
         my $cloned = [ @$numbers ];
         for my $i (0 .. $pickup_num-1) {
             my $random = $i + int(rand($max_num - $i));
