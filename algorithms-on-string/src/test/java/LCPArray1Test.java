@@ -11,19 +11,19 @@ public class LCPArray1Test {
   public void make() throws Exception {
     List<Integer> suffixArray, lcpArray;
     suffixArray = SuffixArray.make("");
-    lcpArray = new LCPArray1("", suffixArray).make();
+    lcpArray = LCPArray1.make("", suffixArray);
     assertThat(lcpArray).isEqualTo(new ArrayList<>());
 
     suffixArray = SuffixArray.make("abc");
-    lcpArray = new LCPArray1("abc", suffixArray).make();
+    lcpArray = LCPArray1.make("abc", suffixArray);
     assertThat(lcpArray).isEqualTo(Arrays.asList(0, 0, 0));
 
     suffixArray = SuffixArray.make("banana");
-    lcpArray = new LCPArray1("banana", suffixArray).make();
+    lcpArray = LCPArray1.make("banana", suffixArray);
     assertThat(lcpArray).isEqualTo(Arrays.asList(1, 3, 0, 0, 2, 0));
 
     suffixArray = SuffixArray.make("aaaa");
-    lcpArray = new LCPArray1("aaaa", suffixArray).make();
+    lcpArray = LCPArray1.make("aaaa", suffixArray);
     assertThat(lcpArray).isEqualTo(Arrays.asList(1, 2, 3, 0));
   }
 }
