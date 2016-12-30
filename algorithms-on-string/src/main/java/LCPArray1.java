@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.List;
 
+// O(n^2) algorithm
 public class LCPArray1 {
   String string;
   List<Integer> suffixArray;
