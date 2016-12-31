@@ -3,10 +3,10 @@ import static java.lang.System.currentTimeMillis;
 import java.util.Arrays;
 
 public class LCPArray2 {
-  static int loopNum = 0;
+  static int compareNum = 0;
 
   public static Integer[] make(String string, Integer[] suffixArray) {
-    loopNum = 0;
+    compareNum = 0;
 
     string += "\0"; // 番兵を入れておく
 
@@ -43,14 +43,15 @@ public class LCPArray2 {
     }
     System.out.println("lcp array2 calcLCP: " + (currentTimeMillis() - begin) + "ms");
 
-    System.out.println("lcp array2 loop: " + loopNum);
+    System.out.println("lcp array2 loop: " + compareNum);
     return lcpArray;
   }
 
   private static int calcLCP(String string, int pos1, int pos2, int lcp) {
+    compareNum++;
     while (string.charAt(pos1 + lcp) == string.charAt(pos2 + lcp)) {
       lcp++;
-      loopNum++;
+      compareNum++;
     }
     return lcp;
   }

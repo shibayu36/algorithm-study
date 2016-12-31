@@ -4,10 +4,10 @@ import java.util.Arrays;
 
 // O(n^2) algorithm
 public class LCPArray1 {
-  static int loopNum = 0;
+  static int compareNum = 0;
 
   public static Integer[] make(String string, Integer[] suffixArray) {
-    loopNum = 0;
+    compareNum = 0;
     string += "\0"; // 番兵を入れておく
 
     long begin = currentTimeMillis();
@@ -20,16 +20,17 @@ public class LCPArray1 {
     }
     System.out.println("lcp array1 calcLCP: " + (currentTimeMillis() - begin) + "ms");
 
-    System.out.println("lcp array1 loop: " + loopNum);
+    System.out.println("lcp array1 loop: " + compareNum);
 
     return lcpArray;
   }
 
   private static int calcLCP(String string, int pos1, int pos2) {
     int lcp = 0;
+    compareNum++;
     while (string.charAt(pos1 + lcp) == string.charAt(pos2 + lcp)) {
       lcp++;
-      loopNum++;
+      compareNum++;
     }
     return lcp;
   }

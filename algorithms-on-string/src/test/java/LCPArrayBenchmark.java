@@ -20,6 +20,7 @@ public class LCPArrayBenchmark {
     LCPArray1.make(text, suffixArray);
     LCPArray2.make(text, suffixArray);
 
+    System.out.println("---- bananapanama ----");
     begin = currentTimeMillis();
     lcpArray = LCPArray1.make(text, suffixArray);
     System.out.println("lcp array1: " + (currentTimeMillis() - begin) + "ms");
@@ -28,6 +29,7 @@ public class LCPArrayBenchmark {
     lcpArray = LCPArray2.make(text, suffixArray);
     System.out.println("lcp array2: " + (currentTimeMillis() - begin) + "ms");
 
+    System.out.println("---- random ----");
     text = RandomStringUtils.randomAlphabetic(100000);
     suffixArray = SuffixArray2.make(text);
 
@@ -49,7 +51,7 @@ public class LCPArrayBenchmark {
     catch (Exception e) {}
     suffixArray = SuffixArray2.make(text);
 
-    System.out.println("---------------");
+    System.out.println("---- Wikipedia ----");
     begin = currentTimeMillis();
     lcpArray = LCPArray1.make(text, suffixArray);
     System.out.println("lcp array1: " + (currentTimeMillis() - begin) + "ms");
@@ -60,7 +62,8 @@ public class LCPArrayBenchmark {
 
     text = text + text;
     suffixArray = SuffixArray2.make(text);
-    System.out.println("---------------");
+
+    System.out.println("---- Wikipedia x 2 ----");
     begin = currentTimeMillis();
     lcpArray = LCPArray1.make(text, suffixArray);
     System.out.println("lcp array1: " + (currentTimeMillis() - begin) + "ms");
