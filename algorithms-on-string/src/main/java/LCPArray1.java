@@ -3,7 +3,10 @@ import java.util.List;
 
 // O(n^2) algorithm
 public class LCPArray1 {
+  static int loopNum = 0;
+
   public static List<Integer> make(String string, List<Integer> suffixArray) {
+    loopNum = 0;
     string += "\0"; // 番兵を入れておく
 
     int size = suffixArray.size();
@@ -13,6 +16,8 @@ public class LCPArray1 {
       lcpArray[i] = calcLCP(string, suffixArray.get(i), suffixArray.get(i + 1));
     }
 
+    System.out.println("lcp array1 loop: " + loopNum);
+
     return Arrays.asList(lcpArray);
   }
 
@@ -20,6 +25,7 @@ public class LCPArray1 {
     int lcp = 0;
     while (string.charAt(pos1 + lcp) == string.charAt(pos2 + lcp)) {
       lcp++;
+      loopNum++;
     }
     return lcp;
   }

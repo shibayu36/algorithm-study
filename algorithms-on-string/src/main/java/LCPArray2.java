@@ -2,7 +2,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class LCPArray2 {
+  static int loopNum = 0;
+
   public static List<Integer> make(String string, List<Integer> suffixArray) {
+    loopNum = 0;
+
     string += "\0"; // 番兵を入れておく
 
     // 文字の長さ順にLCPを計算できるように、
@@ -35,12 +39,14 @@ public class LCPArray2 {
       if (lcp <= 0) lcp = 0;
     }
 
+    out.println("lcp array2 loop: " + loopNum);
     return Arrays.asList(lcpArray);
   }
 
   private static int calcLCP(String string, int pos1, int pos2, int lcp) {
     while (string.charAt(pos1 + lcp) == string.charAt(pos2 + lcp)) {
       lcp++;
+      loopNum++;
     }
     return lcp;
   }
