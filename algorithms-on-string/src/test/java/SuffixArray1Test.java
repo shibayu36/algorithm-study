@@ -7,17 +7,17 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 
-public class SuffixArrayTest {
+public class SuffixArray1Test {
     @Test
     public void make() throws Exception {
         List<Integer> suffixArray;
-        suffixArray = SuffixArray.make("");
+        suffixArray = SuffixArray1.make("");
         assertThat(suffixArray).isEqualTo(new ArrayList<>());
 
-        suffixArray = SuffixArray.make("abc");
+        suffixArray = SuffixArray1.make("abc");
         assertThat(suffixArray).isEqualTo(Arrays.asList(0, 1, 2));
 
-        suffixArray = SuffixArray.make("banana");
+        suffixArray = SuffixArray1.make("banana");
         assertThat(suffixArray).isEqualTo(Arrays.asList(5, 3, 1, 0, 4, 2));
     }
 
