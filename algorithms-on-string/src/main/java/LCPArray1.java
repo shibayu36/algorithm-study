@@ -1,24 +1,23 @@
 import java.util.Arrays;
-import java.util.List;
 
 // O(n^2) algorithm
 public class LCPArray1 {
   static int loopNum = 0;
 
-  public static List<Integer> make(String string, List<Integer> suffixArray) {
+  public static Integer[] make(String string, Integer[] suffixArray) {
     loopNum = 0;
     string += "\0"; // 番兵を入れておく
 
-    int size = suffixArray.size();
+    int size = suffixArray.length;
     Integer[] lcpArray = new Integer[size];
     Arrays.fill(lcpArray, 0);
     for (int i = 0; i < size - 1; i++) {
-      lcpArray[i] = calcLCP(string, suffixArray.get(i), suffixArray.get(i + 1));
+      lcpArray[i] = calcLCP(string, suffixArray[i], suffixArray[i + 1]);
     }
 
     System.out.println("lcp array1 loop: " + loopNum);
 
-    return Arrays.asList(lcpArray);
+    return lcpArray;
   }
 
   private static int calcLCP(String string, int pos1, int pos2) {

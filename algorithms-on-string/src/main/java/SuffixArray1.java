@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class SuffixArray1 {
-    public static List<Integer> make(String string) {
+    public static Integer[] make(String string) {
         // 部分文字列とindexの集合を作る
         List<SuffixArrayItem> items = new ArrayList<>();
         for (int position = 0; position < string.length(); position++) {
@@ -15,7 +15,7 @@ public class SuffixArray1 {
         items.sort( Comparator.comparing(SuffixArrayItem::getString) );
 
         // indexにmapして返す
-        return items.stream().map(x -> x.getPosition()).collect(Collectors.toList());
+        return items.stream().map(x -> x.getPosition()).toArray(size -> new Integer[size]);
     }
 }
 

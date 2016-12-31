@@ -12,7 +12,7 @@ public class LCPArrayBenchmark {
   @Test
   public void make() throws Exception {
     long begin;
-    List<Integer> suffixArray, lcpArray;
+    Integer[] suffixArray, lcpArray;
     String text = StringUtils.repeat("bananapanama", 1000);
     suffixArray = SuffixArray2.make(text);
 

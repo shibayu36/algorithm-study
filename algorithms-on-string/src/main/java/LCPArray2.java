@@ -1,10 +1,9 @@
 import java.util.Arrays;
-import java.util.List;
 
 public class LCPArray2 {
   static int loopNum = 0;
 
-  public static List<Integer> make(String string, List<Integer> suffixArray) {
+  public static Integer[] make(String string, Integer[] suffixArray) {
     loopNum = 0;
 
     string += "\0"; // 番兵を入れておく
@@ -12,10 +11,10 @@ public class LCPArray2 {
     // 文字の長さ順にLCPを計算できるように、
     // suffixArray内のどこに位置するか、
     // 文字列長さ順に並べた配列を用意する
-    int size = suffixArray.size();
+    int size = suffixArray.length;
     Integer[] rank = new Integer[size];
     for (int i = 0; i < size; i++) {
-      rank[suffixArray.get(i)] = i;
+      rank[suffixArray[i]] = i;
     }
 
     Integer[] lcpArray = new Integer[size];
@@ -24,14 +23,14 @@ public class LCPArray2 {
     for (int i = 0; i < size; i++) {
       // suffixArray中のindex番目のLCPを計算する
       int index = rank[i];
-      int pos1 = suffixArray.get(index);
+      int pos1 = suffixArray[index];
       // indexが最後なら、次の比較するものはないので、lcpは0で終わり
       if (index == size - 1) {
         lcpArray[index] = lcp = 0;
         continue;
       }
 
-      int pos2 = suffixArray.get(index + 1);
+      int pos2 = suffixArray[index + 1];
       lcpArray[index] = lcp = calcLCP(string, pos1, pos2, lcp);
 
       // 次は一文字削ったものなので、lcpは1減らす
@@ -39,8 +38,8 @@ public class LCPArray2 {
       if (lcp <= 0) lcp = 0;
     }
 
-    out.println("lcp array2 loop: " + loopNum);
-    return Arrays.asList(lcpArray);
+    System.out.println("lcp array2 loop: " + loopNum);
+    return lcpArray;
   }
 
   private static int calcLCP(String string, int pos1, int pos2, int lcp) {
