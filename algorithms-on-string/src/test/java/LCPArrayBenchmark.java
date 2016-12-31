@@ -22,24 +22,25 @@ public class LCPArrayBenchmark {
 
     begin = currentTimeMillis();
     lcpArray = LCPArray1.make(text, suffixArray);
-    System.out.println("lcp array1: " + (currentTimeMillis() - begin));
+    System.out.println("lcp array1: " + (currentTimeMillis() - begin) + "ms");
 
     begin = currentTimeMillis();
     lcpArray = LCPArray2.make(text, suffixArray);
-    System.out.println("lcp array2: " + (currentTimeMillis() - begin));
+    System.out.println("lcp array2: " + (currentTimeMillis() - begin) + "ms");
 
     text = RandomStringUtils.randomAlphabetic(100000);
     suffixArray = SuffixArray2.make(text);
 
     begin = currentTimeMillis();
     lcpArray = LCPArray1.make(text, suffixArray);
-    System.out.println("lcp array1: " + (currentTimeMillis() - begin));
+    System.out.println("lcp array1: " + (currentTimeMillis() - begin) + "ms");
 
     begin = currentTimeMillis();
     lcpArray = LCPArray2.make(text, suffixArray);
-    System.out.println("lcp array2: " + (currentTimeMillis() - begin));
+    System.out.println("lcp array2: " + (currentTimeMillis() - begin) + "ms");
 
     // 指定のファイル URL のファイルをバイト列として読み込む
+    // sample.txtにhttps://ja.wikipedia.org/wiki/%E6%94%BF%E6%95%99%E5%88%86%E9%9B%A2%E3%81%AE%E6%AD%B4%E5%8F%B2 がコピペされているとする
     try {
       byte[] fileContentBytes = Files.readAllBytes(Paths.get("./sample.txt"));
 // 読み込んだバイト列を UTF-8 でデコードして文字列にする
@@ -51,10 +52,22 @@ public class LCPArrayBenchmark {
     System.out.println("---------------");
     begin = currentTimeMillis();
     lcpArray = LCPArray1.make(text, suffixArray);
-    System.out.println("lcp array1: " + (currentTimeMillis() - begin));
+    System.out.println("lcp array1: " + (currentTimeMillis() - begin) + "ms");
 
     begin = currentTimeMillis();
     lcpArray = LCPArray2.make(text, suffixArray);
-    System.out.println("lcp array2: " + (currentTimeMillis() - begin));
+    System.out.println("lcp array2: " + (currentTimeMillis() - begin) + "ms");
+
+    text = text + text;
+    suffixArray = SuffixArray2.make(text);
+    System.out.println("---------------");
+    begin = currentTimeMillis();
+    lcpArray = LCPArray1.make(text, suffixArray);
+    System.out.println("lcp array1: " + (currentTimeMillis() - begin) + "ms");
+
+    System.out.println("---------------");
+    begin = currentTimeMillis();
+    lcpArray = LCPArray2.make(text, suffixArray);
+    System.out.println("lcp array2: " + (currentTimeMillis() - begin) + "ms");
   }
 }

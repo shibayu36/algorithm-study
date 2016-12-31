@@ -1,3 +1,5 @@
+import static java.lang.System.currentTimeMillis;
+
 import java.util.Arrays;
 
 // O(n^2) algorithm
@@ -8,12 +10,15 @@ public class LCPArray1 {
     loopNum = 0;
     string += "\0"; // 番兵を入れておく
 
+    long begin = currentTimeMillis();
+
     int size = suffixArray.length;
     Integer[] lcpArray = new Integer[size];
     Arrays.fill(lcpArray, 0);
     for (int i = 0; i < size - 1; i++) {
       lcpArray[i] = calcLCP(string, suffixArray[i], suffixArray[i + 1]);
     }
+    System.out.println("lcp array1 calcLCP: " + (currentTimeMillis() - begin) + "ms");
 
     System.out.println("lcp array1 loop: " + loopNum);
 
