@@ -3,7 +3,7 @@ import static java.lang.System.currentTimeMillis;
 import java.util.Arrays;
 
 public class LCPArray2 {
-  static int compareNum = 0;
+  public static int compareNum = 0;
 
   public static Integer[] make(String string, Integer[] suffixArray) {
     compareNum = 0;
@@ -22,7 +22,6 @@ public class LCPArray2 {
     Integer[] lcpArray = new Integer[size];
     Arrays.fill(lcpArray, 0);
 
-    long begin = currentTimeMillis();
     int lcp = 0;
     for (int i = 0; i < size; i++) {
       // suffixArray中のindex番目のLCPを計算する
@@ -41,9 +40,7 @@ public class LCPArray2 {
       lcp--;
       if (lcp <= 0) lcp = 0;
     }
-    System.out.println("lcp array2 calcLCP: " + (currentTimeMillis() - begin) + "ms");
 
-    System.out.println("lcp array2 loop: " + compareNum);
     return lcpArray;
   }
 

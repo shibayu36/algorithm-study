@@ -20,25 +20,29 @@ public class LCPArrayBenchmark {
     LCPArray1.make(text, suffixArray);
     LCPArray2.make(text, suffixArray);
 
-    System.out.println("---- bananapanama ----");
+    System.out.println("---- bananapanama x 1000 ----");
     begin = currentTimeMillis();
     lcpArray = LCPArray1.make(text, suffixArray);
+    System.out.println("lcp array1 compareNum: " + LCPArray1.compareNum);
     System.out.println("lcp array1: " + (currentTimeMillis() - begin) + "ms");
 
     begin = currentTimeMillis();
     lcpArray = LCPArray2.make(text, suffixArray);
+    System.out.println("lcp array2 compareNum: " + LCPArray2.compareNum);
     System.out.println("lcp array2: " + (currentTimeMillis() - begin) + "ms");
 
-    System.out.println("---- random ----");
+    System.out.println("---- random 100000 chars ----");
     text = RandomStringUtils.randomAlphabetic(100000);
     suffixArray = SuffixArray2.make(text);
 
     begin = currentTimeMillis();
     lcpArray = LCPArray1.make(text, suffixArray);
+    System.out.println("lcp array1 compareNum: " + LCPArray1.compareNum);
     System.out.println("lcp array1: " + (currentTimeMillis() - begin) + "ms");
 
     begin = currentTimeMillis();
     lcpArray = LCPArray2.make(text, suffixArray);
+    System.out.println("lcp array2 compareNum: " + LCPArray2.compareNum);
     System.out.println("lcp array2: " + (currentTimeMillis() - begin) + "ms");
 
     // 指定のファイル URL のファイルをバイト列として読み込む
@@ -54,10 +58,12 @@ public class LCPArrayBenchmark {
     System.out.println("---- Wikipedia ----");
     begin = currentTimeMillis();
     lcpArray = LCPArray1.make(text, suffixArray);
+    System.out.println("lcp array1 compareNum: " + LCPArray1.compareNum);
     System.out.println("lcp array1: " + (currentTimeMillis() - begin) + "ms");
 
     begin = currentTimeMillis();
     lcpArray = LCPArray2.make(text, suffixArray);
+    System.out.println("lcp array2 compareNum: " + LCPArray2.compareNum);
     System.out.println("lcp array2: " + (currentTimeMillis() - begin) + "ms");
 
     text = text + text;
@@ -66,11 +72,12 @@ public class LCPArrayBenchmark {
     System.out.println("---- Wikipedia x 2 ----");
     begin = currentTimeMillis();
     lcpArray = LCPArray1.make(text, suffixArray);
+    System.out.println("lcp array1 compareNum: " + LCPArray1.compareNum);
     System.out.println("lcp array1: " + (currentTimeMillis() - begin) + "ms");
 
-    System.out.println("---------------");
     begin = currentTimeMillis();
     lcpArray = LCPArray2.make(text, suffixArray);
+    System.out.println("lcp array2 compareNum: " + LCPArray2.compareNum);
     System.out.println("lcp array2: " + (currentTimeMillis() - begin) + "ms");
   }
 }
