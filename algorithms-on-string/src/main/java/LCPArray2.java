@@ -5,10 +5,10 @@ import java.util.Arrays;
 public class LCPArray2 {
   public static int compareNum = 0;
 
-  public static Integer[] make(String string, Integer[] suffixArray) {
+  public static Integer[] make(String text, Integer[] suffixArray) {
     compareNum = 0;
 
-    string += "\0"; // 番兵を入れておく
+    text += "\0"; // 番兵を入れておく
 
     // 文字の長さ順にLCPを計算できるように、
     // suffixArray内のどこに位置するか、
@@ -20,8 +20,6 @@ public class LCPArray2 {
     }
 
     Integer[] lcpArray = new Integer[size];
-    Arrays.fill(lcpArray, 0);
-
     int lcp = 0;
     for (int i = 0; i < size; i++) {
       // suffixArray中のindex番目のLCPを計算する
@@ -34,7 +32,7 @@ public class LCPArray2 {
       }
 
       int pos2 = suffixArray[index + 1];
-      lcpArray[index] = lcp = calcLCP(string, pos1, pos2, lcp);
+      lcpArray[index] = lcp = calcLCP(text, pos1, pos2, lcp);
 
       // 次は一文字削ったものなので、lcpは1減らす
       lcp--;
@@ -44,9 +42,9 @@ public class LCPArray2 {
     return lcpArray;
   }
 
-  private static int calcLCP(String string, int pos1, int pos2, int lcp) {
+  private static int calcLCP(String text, int pos1, int pos2, int lcp) {
     compareNum++;
-    while (string.charAt(pos1 + lcp) == string.charAt(pos2 + lcp)) {
+    while (text.charAt(pos1 + lcp) == text.charAt(pos2 + lcp)) {
       lcp++;
       compareNum++;
     }
